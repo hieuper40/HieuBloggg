@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker cho Lập Trình Viên Web</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: left; /* Căn lề trái */
+        }
+        header {
+            background-color: #111;
+            padding: 20px;
+        }
+        header .logo img {
+            width: 50px;
+            height: auto;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            padding: 50px 20px;
+            max-width: 1000px; /* Giới hạn chiều rộng */
+            margin: 0 auto; /* Căn giữa main */
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        .read-more {
+            color: #ff6347;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            display: inline-block; /* Đảm bảo nút "Đọc tiếp" là một khối */
+            padding: 10px 20px; /* Thêm padding cho nút */
+            margin-top: 20px; /* Thêm khoảng cách từ nội dung */
+            border: 2px solid #ff6347; /* Viền cho nút */
+            border-radius: 5px; /* Bo tròn các góc */
+            text-align: center;
+        }
+        .read-more:hover {
+            color: #fff;
+            background-color: #ff6347;
+        }
+        footer {
+            background-color: #111;
+            padding: 20px;
+        }
+        .social-links a {
+            color: #fff;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./img/icon-code.jpg" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="docker_for_web_developers.html">Docker cho Lập Trình Viên Web</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Docker cho Lập Trình Viên Web</h1>
+        <p>Docker là một công cụ cực kỳ hữu ích cho lập trình viên web, giúp họ xây dựng, triển khai và chạy ứng dụng trong các container. Các container này nhẹ, dễ dàng di chuyển và có thể được triển khai trên nhiều môi trường khác nhau mà không gặp phải vấn đề về sự phụ thuộc môi trường.</p>
+
+        <h2>1. Docker là gì?</h2>
+        <p>Docker là một nền tảng phần mềm mở, cho phép bạn đóng gói ứng dụng cùng với tất cả các phần phụ thuộc của nó vào trong một container. Điều này giúp ứng dụng chạy một cách nhất quán trên mọi môi trường, từ môi trường phát triển đến sản xuất.</p>
+
+        <h2>2. Lợi ích của Docker đối với lập trình viên web</h2>
+        <ul>
+            <li><strong>Tiết kiệm thời gian thiết lập môi trường:</strong> Docker cho phép lập trình viên tạo các môi trường phát triển giống hệt như môi trường sản xuất, giúp giảm thiểu sự khác biệt giữa chúng.</li>
+            <li><strong>Khả năng mở rộng dễ dàng:</strong> Docker giúp bạn triển khai các ứng dụng trên nhiều máy chủ khác nhau mà không gặp phải vấn đề về tương thích phần cứng hay phần mềm.</li>
+            <li><strong>Quản lý phụ thuộc dễ dàng:</strong> Bạn có thể đóng gói tất cả các thư viện và công cụ cần thiết trong container mà không cần phải cài đặt chúng trên từng máy chủ cụ thể.</li>
+            <li><strong>Chạy ứng dụng dễ dàng trong các môi trường khác nhau:</strong> Docker giúp bạn triển khai ứng dụng từ môi trường phát triển lên môi trường thử nghiệm và sản xuất mà không cần lo lắng về các sự cố tương thích.</li>
+        </ul>
+
+        <h2>3. Cài đặt Docker</h2>
+        <p>Để sử dụng Docker, bạn cần cài đặt Docker trên máy tính của mình. Bạn có thể tải Docker từ trang web chính thức của Docker tại <a href="https://www.docker.com/products/docker-desktop" target="_blank">Docker Desktop</a>.</p>
+
+        <h2>4. Tạo Dockerfile cho ứng dụng web của bạn</h2>
+        <p>Dockerfile là một tập tin văn bản chứa các hướng dẫn để xây dựng một Docker image. Đây là cách bạn cấu hình môi trường để ứng dụng của bạn có thể chạy trong một container.</p>
+        <pre>
+# Dockerfile mẫu cho ứng dụng Node.js
+FROM node:14
+
+# Tạo thư mục làm việc trong container
+WORKDIR /usr/src/app
+
+# Sao chép package.json và cài đặt các phụ thuộc
+COPY package*.json ./
+RUN npm install
+
+# Sao chép tất cả mã nguồn ứng dụng vào container
+COPY . .
+
+# Mở cổng cho ứng dụng
+EXPOSE 3000
+
+# Chạy ứng dụng
+CMD ["npm", "start"]
+        </pre>
+
+        <h2>5. Xây dựng và chạy container Docker</h2>
+        <p>Sau khi bạn đã có Dockerfile, bạn có thể xây dựng Docker image và chạy container từ image đó:</p>
+        <pre>
+# Xây dựng Docker image
+docker build -t my-app .
+
+# Chạy Docker container
+docker run -p 3000:3000 my-app
+        </pre>
+
+        <h2>6. Triển khai ứng dụng với Docker</h2>
+        <p>Docker không chỉ giúp bạn phát triển và thử nghiệm ứng dụng một cách hiệu quả, mà còn hỗ trợ triển khai ứng dụng lên các nền tảng đám mây như AWS, Google Cloud, hoặc DigitalOcean. Bạn có thể sử dụng Docker Compose để quản lý nhiều container cho các ứng dụng phức tạp.</p>
+
+        <a href="blog.html" class="read-more">Trở về blog</a>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">LinkedIn</a>
+            <a href="#" target="_blank">Twitter</a>
+        </div>
+    </footer>
+</body>
+</html>

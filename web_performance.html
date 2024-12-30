@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tối Ưu Hiệu Suất Web: Các Kỹ Thuật Hàng Đầu</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: left; /* Căn lề trái */
+        }
+        header {
+            background-color: #111;
+            padding: 20px;
+        }
+        header .logo img {
+            width: 50px;
+            height: auto;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            padding: 50px 20px;
+            max-width: 1000px; /* Giới hạn chiều rộng */
+            margin: 0 auto; /* Căn giữa main */
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .read-more {
+            color: #ff6347;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            display: inline-block; /* Đảm bảo nút "Đọc tiếp" là một khối */
+            padding: 10px 20px; /* Thêm padding cho nút */
+            margin-top: 20px; /* Thêm khoảng cách từ nội dung */
+            border: 2px solid #ff6347; /* Viền cho nút */
+            border-radius: 5px; /* Bo tròn các góc */
+            text-align: center;
+        }
+        .read-more:hover {
+            color: #fff;
+            background-color: #ff6347;
+        }
+        footer {
+            background-color: #111;
+            padding: 20px;
+        }
+        .social-links a {
+            color: #fff;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./img/icon-code.jpg" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="web_performance.html">Tối Ưu Hiệu Suất Web</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Tối Ưu Hiệu Suất Web: Các Kỹ Thuật Hàng Đầu</h1>
+        <p>Hiệu suất web là yếu tố quan trọng để cải thiện trải nghiệm người dùng và tối ưu hóa SEO. Trong bài viết này, chúng ta sẽ cùng tìm hiểu một số kỹ thuật tối ưu hiệu suất web hiệu quả.</p>
+
+        <h2>1. Sử Dụng Các Kỹ Thuật Tải Trang Nhanh</h2>
+        <p>Trang web tải nhanh không chỉ tạo ra trải nghiệm người dùng tốt hơn mà còn giúp SEO. Một số kỹ thuật phổ biến để cải thiện tốc độ tải trang bao gồm:</p>
+        <ul>
+            <li>Tải ảnh và tài nguyên tối ưu hóa (sử dụng định dạng WebP)</li>
+            <li>Chia nhỏ tài nguyên JavaScript và CSS</li>
+            <li>Sử dụng lazy loading cho hình ảnh và video</li>
+        </ul>
+
+        <h2>2. Tối Ưu Mã JavaScript</h2>
+        <p>JavaScript là một trong những yếu tố ảnh hưởng lớn đến hiệu suất của trang web. Để tối ưu hóa JavaScript, bạn có thể:</p>
+        <ul>
+            <li>Loại bỏ mã JavaScript không cần thiết</li>
+            <li>Sử dụng công cụ minification để giảm kích thước tệp</li>
+            <li>Trì hoãn hoặc tải JavaScript không đồng bộ</li>
+        </ul>
+
+        <h2>3. Cải Thiện Hiệu Suất Server</h2>
+        <p>Đảm bảo server của bạn xử lý các yêu cầu một cách nhanh chóng và hiệu quả. Một số kỹ thuật giúp cải thiện hiệu suất server bao gồm:</p>
+        <ul>
+            <li>Sử dụng caching để giảm tải cho server</li>
+            <li>Chuyển sang sử dụng CDN để phục vụ các tài nguyên tĩnh</li>
+            <li>Đảm bảo server có khả năng mở rộng khi cần thiết</li>
+        </ul>
+
+        <h2>4. Sử Dụng HTTPS</h2>
+        <p>Việc chuyển sang giao thức HTTPS không chỉ giúp bảo mật dữ liệu mà còn cải thiện hiệu suất web nhờ vào tính năng HTTP/2, giúp truyền tải dữ liệu nhanh hơn.</p>
+
+        <a href="blog.html" class="read-more">Trở về blog</a>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">LinkedIn</a>
+            <a href="#" target="_blank">Twitter</a>
+        </div>
+    </footer>
+</body>
+</html>

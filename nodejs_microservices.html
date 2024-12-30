@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xây Dựng Microservices với Node.js</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: left; /* Căn lề trái */
+        }
+        header {
+            background-color: #111;
+            padding: 20px;
+        }
+        header .logo img {
+            width: 50px;
+            height: auto;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            padding: 50px 20px;
+            max-width: 1000px; /* Giới hạn chiều rộng */
+            margin: 0 auto; /* Căn giữa main */
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        .read-more {
+            color: #ff6347;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            display: inline-block; /* Đảm bảo nút "Đọc tiếp" là một khối */
+            padding: 10px 20px; /* Thêm padding cho nút */
+            margin-top: 20px; /* Thêm khoảng cách từ nội dung */
+            border: 2px solid #ff6347; /* Viền cho nút */
+            border-radius: 5px; /* Bo tròn các góc */
+            text-align: center;
+        }
+        .read-more:hover {
+            color: #fff;
+            background-color: #ff6347;
+        }
+        footer {
+            background-color: #111;
+            padding: 20px;
+        }
+        .social-links a {
+            color: #fff;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./img/icon-code.jpg" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="nodejs_microservices.html">Xây Dựng Microservices với Node.js</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Xây Dựng Microservices với Node.js</h1>
+        <p>Microservices là một kiến trúc phần mềm giúp chia nhỏ các ứng dụng phức tạp thành các dịch vụ nhỏ hơn, độc lập và có thể triển khai riêng biệt. Trong bài viết này, chúng ta sẽ tìm hiểu cách xây dựng hệ thống microservices sử dụng Node.js.</p>
+
+        <h2>1. Giới Thiệu về Microservices</h2>
+        <p>Microservices là một phương pháp phát triển phần mềm trong đó một ứng dụng được chia thành các dịch vụ nhỏ, mỗi dịch vụ thực hiện một chức năng riêng biệt. Các dịch vụ này có thể được phát triển, triển khai và mở rộng độc lập với nhau.</p>
+
+        <h2>2. Cài Đặt Môi Trường Node.js</h2>
+        <p>Trước khi bắt đầu, bạn cần phải cài đặt Node.js trên máy tính của mình. Bạn có thể tải Node.js từ trang web chính thức: <a href="https://nodejs.org" target="_blank">https://nodejs.org</a>.</p>
+
+        <h2>3. Cấu Trúc Dự Án</h2>
+        <p>Khi xây dựng một hệ thống microservices, bạn sẽ cần chia các chức năng thành nhiều service riêng biệt. Dưới đây là một ví dụ về cấu trúc thư mục cơ bản cho các microservices:</p>
+        <pre>
+project/
+│
+├── service-user/
+│   ├── app.js
+│   ├── package.json
+│   └── routes/
+│
+├── service-order/
+│   ├── app.js
+│   ├── package.json
+│   └── routes/
+│
+└── service-payment/
+    ├── app.js
+    ├── package.json
+    └── routes/
+        </pre>
+
+        <h2>4. Xây Dựng Microservice Đầu Tiên</h2>
+        <p>Giờ đây, chúng ta sẽ tạo một microservice đơn giản để quản lý thông tin người dùng. Mỗi microservice sẽ là một API RESTful độc lập, và chúng sẽ giao tiếp với nhau thông qua HTTP.</p>
+
+        <h3>Service User</h3>
+        <p>Đầu tiên, chúng ta tạo một service đơn giản cho việc quản lý người dùng.</p>
+        <pre>
+# service-user/app.js
+const express = require('express');
+const app = express();
+const port = 3001;
+
+app.use(express.json());
+
+let users = [
+    { id: 1, name: 'Nguyen A' },
+    { id: 2, name: 'Tran B' }
+];
+
+app.get('/users', (req, res) => {
+    res.json(users);
+});
+
+app.listen(port, () => {
+    console.log(`User service listening at http://localhost:${port}`);
+});
+        </pre>
+
+        <h2>5. Giao Tiếp Giữa Các Microservices</h2>
+        <p>Các microservices có thể giao tiếp với nhau thông qua các API RESTful. Ví dụ, dịch vụ thanh toán có thể yêu cầu thông tin người dùng từ service-user để xử lý một giao dịch.</p>
+        <pre>
+# service-payment/app.js
+const express = require('express');
+const axios = require('axios');
+const app = express();
+const port = 3003;
+
+app.get('/payment', async (req, res) => {
+    try {
+        const userResponse = await axios.get('http://localhost:3001/users');
+        const users = userResponse.data;
+        res.json({ message: 'Payment processed', users });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to process payment' });
+    }
+});
+
+app.listen(port, () => {
+    console.log(`Payment service listening at http://localhost:${port}`);
+});
+        </pre>
+
+        <h2>6. Triển Khai Microservices</h2>
+        <p>Sau khi xây dựng các microservices, bạn có thể triển khai chúng lên các server hoặc nền tảng đám mây như Docker, Kubernetes hoặc AWS để chạy các dịch vụ này một cách độc lập.</p>
+
+        <a href="blog.html" class="read-more">Trở về blog</a>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">LinkedIn</a>
+            <a href="#" target="_blank">Twitter</a>
+        </div>
+    </footer>
+</body>
+</html>

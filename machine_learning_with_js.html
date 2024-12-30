@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning với JavaScript</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: left; /* Căn lề trái */
+        }
+        header {
+            background-color: #111;
+            padding: 20px;
+        }
+        header .logo img {
+            width: 50px;
+            height: auto;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            padding: 50px 20px;
+            max-width: 1000px; /* Giới hạn chiều rộng */
+            margin: 0 auto; /* Căn giữa main */
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        .read-more {
+            color: #ff6347;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            display: inline-block; /* Đảm bảo nút "Đọc tiếp" là một khối */
+            padding: 10px 20px; /* Thêm padding cho nút */
+            margin-top: 20px; /* Thêm khoảng cách từ nội dung */
+            border: 2px solid #ff6347; /* Viền cho nút */
+            border-radius: 5px; /* Bo tròn các góc */
+            text-align: center;
+        }
+        .read-more:hover {
+            color: #fff;
+            background-color: #ff6347;
+        }
+        footer {
+            background-color: #111;
+            padding: 20px;
+        }
+        .social-links a {
+            color: #fff;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./img/icon-code.jpg" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="machine_learning_with_js.html">Machine Learning với JavaScript</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Machine Learning với JavaScript</h1>
+        <p>Machine learning không còn là khái niệm xa lạ và giờ đây, bạn có thể áp dụng machine learning trực tiếp trong JavaScript. Một trong những thư viện phổ biến nhất cho machine learning trong JavaScript là TensorFlow.js. Thư viện này cho phép bạn xây dựng và huấn luyện các mô hình machine learning ngay trong trình duyệt hoặc trong Node.js.</p>
+
+        <h2>1. TensorFlow.js là gì?</h2>
+        <p>TensorFlow.js là một thư viện JavaScript mã nguồn mở của Google, giúp bạn xây dựng và huấn luyện các mô hình machine learning trực tiếp trong trình duyệt hoặc trong môi trường Node.js. Nó cung cấp các API để làm việc với Tensor (mảng nhiều chiều), xây dựng mô hình học sâu (deep learning), và thực hiện các phép toán tuyến tính cần thiết cho machine learning.</p>
+
+        <h2>2. Cài đặt TensorFlow.js</h2>
+        <p>Để sử dụng TensorFlow.js trong dự án của bạn, bạn cần cài đặt thư viện này. Bạn có thể dễ dàng cài đặt nó qua npm hoặc sử dụng CDN trong trình duyệt.</p>
+        
+        <h3>2.1. Cài đặt với npm (Node.js)</h3>
+        <pre>
+# Cài đặt TensorFlow.js
+npm install @tensorflow/tfjs
+        </pre>
+
+        <h3>2.2. Sử dụng CDN trong trình duyệt</h3>
+        <pre>
+<!-- Thêm vào trong thẻ <head> -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+        </pre>
+
+        <h2>3. Một ví dụ đơn giản với TensorFlow.js</h2>
+        <p>Hãy bắt đầu với một ví dụ đơn giản về việc tạo một tensor và thực hiện các phép toán cơ bản với nó.</p>
+        <pre>
+<script>
+// Tạo một tensor 2x2
+const tensor = tf.tensor([[1, 2], [3, 4]]);
+tensor.print(); // In tensor ra console
+
+// Thực hiện phép cộng với một tensor khác
+const tensor2 = tf.tensor([[5, 6], [7, 8]]);
+const result = tensor.add(tensor2);
+result.print(); // In kết quả ra console
+</script>
+        </pre>
+
+        <h2>4. Huấn luyện mô hình học máy trong TensorFlow.js</h2>
+        <p>Để huấn luyện một mô hình học máy, bạn cần tạo một mô hình, biên dịch mô hình và huấn luyện nó với dữ liệu. Dưới đây là ví dụ cơ bản về cách xây dựng và huấn luyện một mô hình hồi quy đơn giản trong TensorFlow.js.</p>
+        <pre>
+<script>
+// Tạo mô hình Sequential
+const model = tf.sequential();
+model.add(tf.layers.dense({ units: 1, inputShape: [1] }));
+
+// Biên dịch mô hình
+model.compile({ loss: 'meanSquaredError', optimizer: 'sgd' });
+
+// Dữ liệu huấn luyện
+const xs = tf.tensor([1, 2, 3, 4]);
+const ys = tf.tensor([1, 2, 3, 4]);
+
+// Huấn luyện mô hình
+model.fit(xs, ys, { epochs: 100 }).then(() => {
+  // Dự đoán
+  model.predict(tf.tensor([5])).print(); // Dự đoán cho giá trị 5
+});
+</script>
+        </pre>
+
+        <h2>5. Lợi ích khi sử dụng Machine Learning trong JavaScript</h2>
+        <ul>
+            <li><strong>Tiện lợi:</strong> Machine learning có thể được triển khai trực tiếp trong trình duyệt, giúp giảm độ trễ và không cần server phức tạp.</li>
+            <li><strong>Khả năng mở rộng:</strong> TensorFlow.js hỗ trợ cả môi trường trình duyệt và Node.js, cho phép ứng dụng được mở rộng một cách dễ dàng.</li>
+            <li><strong>Dễ dàng tích hợp:</strong> Với JavaScript, bạn có thể dễ dàng tích hợp machine learning vào các ứng dụng web mà không cần học thêm một ngôn ngữ khác.</li>
+        </ul>
+
+        <h2>6. Các ứng dụng của Machine Learning trong Web Development</h2>
+        <p>Machine learning trong JavaScript có thể được áp dụng trong nhiều lĩnh vực, chẳng hạn như:</p>
+        <ul>
+            <li>Phân loại văn bản (text classification)</li>
+            <li>Nhận diện hình ảnh (image recognition)</li>
+            <li>Hệ thống đề xuất (recommendation systems)</li>
+            <li>Dự đoán (predictions) như dự báo thời tiết, dự báo cổ phiếu, v.v.</li>
+        </ul>
+
+        <a href="blog.html" class="read-more">Trở về blog</a>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">LinkedIn</a>
+            <a href="#" target="_blank">Twitter</a>
+        </div>
+    </footer>
+</body>
+</html>

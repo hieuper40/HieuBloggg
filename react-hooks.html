@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Hooks: Từ Cơ Bản Đến Nâng Cao</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <div class="logo">
+                    <img src="./img/icon-code.jpg" alt="Logo">
+                </div>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-detail">
+            <h1 class="main-title">React Hooks: Từ Cơ Bản Đến Nâng Cao</h1>
+            <p class="intro-text">
+                Trong bài viết này, chúng ta sẽ cùng nhau tìm hiểu về React Hooks, một tính năng mạnh mẽ của React giúp tối giản hóa việc sử dụng state và lifecycle methods trong các functional components.
+            </p>
+
+            <h2 class="sub-title">1. React Hooks là gì?</h2>
+            <p class="sub-text">
+                React Hooks là các hàm cho phép bạn "hook vào" state và lifecycle methods của React từ trong functional components. Trước khi React ra mắt hooks, chỉ có class components mới có thể sử dụng state và lifecycle methods, nhưng giờ đây, bạn có thể làm điều đó với functional components mà không cần phải viết một class.
+            </p>
+
+            <h2 class="sub-title">2. Các loại React Hooks cơ bản</h2>
+            <h3 class="sub-sub-title">useState</h3>
+            <p class="sub-text">
+                `useState` là một hook dùng để khai báo state trong functional component. Đây là hook cơ bản và được sử dụng rất phổ biến.
+            </p>
+            <pre><code>
+const [count, setCount] = useState(0);
+            </code></pre>
+
+            <h3 class="sub-sub-title">useEffect</h3>
+            <p class="sub-text">
+                `useEffect` là hook giúp bạn thực hiện các tác vụ phụ (side effects) trong component như gọi API, thay đổi DOM, hoặc đăng ký sự kiện.
+            </p>
+            <pre><code>
+useEffect(() => {
+    document.title = `Bạn đã nhấn ${count} lần`;
+}, [count]);
+            </code></pre>
+
+            <h2 class="sub-title">3. Hooks nâng cao</h2>
+            <p class="sub-text">
+                Ngoài `useState` và `useEffect`, React còn cung cấp nhiều hooks nâng cao khác như `useContext`, `useReducer`, và `useCallback` để giải quyết các vấn đề phức tạp hơn trong quản lý state và tối ưu hóa hiệu suất.
+            </p>
+
+            <h2 class="sub-title">4. Sử dụng custom hooks</h2>
+            <p class="sub-text">
+                Custom hooks là một hàm JavaScript mà bạn có thể tạo ra để tái sử dụng logic trong các component khác nhau. Custom hooks giúp mã của bạn trở nên dễ đọc và dễ duy trì hơn.
+            </p>
+            <pre><code>
+function useCounter() {
+    const [count, setCount] = useState(0);
+    const increment = () => setCount(count + 1);
+    return [count, increment];
+}
+            </code></pre>
+
+            <a href="blog.html" class="back-button">Trở lại Blog</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+</body>
+</html>

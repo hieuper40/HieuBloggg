@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async/Await trong JavaScript: Giải Thích Chi Tiết</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    header nav {
+        background-color: #333;
+        padding: 10px 0;
+    }
+
+    header nav ul {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    header nav ul li {
+        margin: 0 20px;
+    }
+
+    header nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    /* Cập nhật nền màu đen cho phần nội dung */
+    .blog-detail {
+        width: 80%;
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #1e1e1e;  /* Nền màu đen */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        color: #f8f8f8;  /* Màu chữ sáng */
+    }
+
+    .back-button {
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+
+    .back-button:hover {
+        background-color: #0056b3;
+    }
+
+    .blog-detail h1 {
+        font-size: 32px;
+        color: #f8f8f8;  /* Chữ sáng */
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .blog-detail p {
+        line-height: 1.6;
+        font-size: 18px;
+        color: #f8f8f8;  /* Chữ sáng */
+    }
+
+    .blog-detail hr {
+        border: 0;
+        border-top: 1px solid #ddd;
+        margin: 20px 0;
+    }
+
+    .blog-detail h2 {
+        font-size: 24px;
+        color: #f8f8f8;  /* Chữ sáng */
+        margin-top: 30px;
+    }
+
+    .blog-detail ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        color: #f8f8f8;  /* Chữ sáng */
+    }
+
+    /* Cập nhật màu nền của bảng code */
+    .blog-detail pre {
+        background-color: #1e1e1e;  /* Màu nền đen */
+        color: #f8f8f8;  /* Chữ sáng */
+        padding: 20px;
+        border-radius: 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 16px;
+    }
+
+    footer {
+        background-color: #333;
+        padding: 20px;
+        text-align: center;
+        color: white;
+    }
+
+    footer .social-links a {
+        margin: 0 10px;
+        color: white;
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+    footer .social-links a:hover {
+        color: #007bff;
+    }
+</style>
+
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <div class="logo">
+                    <img src="./img/icon-code.jpg" alt="Logo Phạm Trung Hiếu" style="width: 50px; height: auto;">
+                </div>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-detail">
+            <!-- Nút "Trở lại Blog" -->
+            <a href="blog.html" class="back-button">Trở lại Blog</a>
+
+            <h1>Async/Await trong JavaScript: Giải Thích Chi Tiết</h1>
+            <p><strong>Tác giả:</strong> Phạm Trung Hiếu</p>
+            <p><strong>Ngày đăng:</strong> 30/12/2024</p>
+            <hr>
+
+            <p>
+                <strong>Async/Await</strong> là một tính năng rất mạnh mẽ trong JavaScript giúp bạn làm việc với các thao tác bất đồng bộ một cách đơn giản và dễ hiểu hơn. Trong bài viết này, chúng ta sẽ tìm hiểu về cách sử dụng <code>async</code> và <code>await</code> trong JavaScript, những lợi ích mà chúng mang lại, và các ví dụ thực tế.
+            </p>
+
+            <h2>1. Async/Await là gì?</h2>
+            <p>
+                Trước khi có <code>async/await</code>, JavaScript chủ yếu sử dụng các hàm callback hoặc <code>Promise</code> để xử lý bất đồng bộ. Tuy nhiên, việc sử dụng <code>Promise</code> có thể dẫn đến tình trạng "callback hell" (địa ngục callback) và rất khó bảo trì mã nguồn. Chính vì vậy, <code>async</code> và <code>await</code> được giới thiệu để cải thiện điều này.
+            </p>
+
+            <p>
+                - <strong>async</strong>: Dùng để khai báo một hàm bất đồng bộ. Một hàm khai báo là <code>async</code> sẽ luôn trả về một <code>Promise</code>, dù bạn có dùng từ khóa <code>return</code> trong hàm hay không.
+            </p>
+            <p>
+                - <strong>await</strong>: Dùng để chờ kết quả của một <code>Promise</code> trong hàm <code>async</code>. Khi gặp <code>await</code>, JavaScript sẽ chờ cho đến khi <code>Promise</code> đó được giải quyết (resolved) hoặc bị từ chối (rejected).
+            </p>
+
+            <h2>2. Cách sử dụng Async/Await</h2>
+            <p>
+                Dưới đây là một ví dụ đơn giản về cách sử dụng <code>async/await</code> trong JavaScript:
+            </p>
+            <pre><code>
+            async function fetchData() {
+                let response = await fetch('https://api.example.com/data');
+                let data = await response.json();
+                console.log(data);
+            }
+
+            fetchData();
+            </code></pre>
+            <p>
+                Trong ví dụ trên, hàm <code>fetchData</code> được khai báo là <code>async</code>, và chúng ta sử dụng <code>await</code> để chờ kết quả trả về từ <code>fetch</code> và sau đó chuyển đổi dữ liệu thành định dạng JSON.
+            </p>
+
+            <h2>3. Lợi ích của Async/Await</h2>
+            <ul>
+                <li><strong>Code dễ đọc hơn:</strong> Thay vì phải sử dụng các callback lồng nhau hoặc chuỗi <code>then()</code> từ <code>Promise</code>, <code>async/await</code> cho phép chúng ta viết mã bất đồng bộ giống như mã đồng bộ.</li>
+                <li><strong>Quản lý lỗi dễ dàng:</strong> Với <code>async/await</code>, bạn có thể sử dụng <code>try/catch</code> để bắt lỗi thay vì phải xử lý trong các hàm <code>catch()</code>.</li>
+            </ul>
+
+            <h2>4. Ví dụ về việc sử dụng try/catch với async/await</h2>
+            <p>
+                Việc xử lý lỗi khi làm việc với <code>async/await</code> rất đơn giản, bạn chỉ cần bao quanh mã của bạn trong một khối <code>try/catch</code>:
+            </p>
+            <pre><code>
+async function fetchData() {
+    try {
+        let response = await fetch('https://api.example.com/data');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        let data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.log('Có lỗi xảy ra: ', error);
+    }
+}
+
+fetchData();
+            </code></pre>
+
+            <h2>5. Kết luận</h2>
+            <p>
+                Async/Await là một trong những tính năng mạnh mẽ và tiện lợi trong JavaScript để xử lý các thao tác bất đồng bộ. Việc sử dụng <code>async/await</code> giúp bạn viết mã dễ đọc, dễ bảo trì và giúp xử lý lỗi một cách rõ ràng hơn. Nếu bạn chưa sử dụng nó, hãy thử ngay trong dự án của mình!
+            </p>
+
+            <!-- Nút "Trở lại Blog" -->
+            <a href="blog.html" class="back-button">Trở lại Blog</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+</body>
+</html>

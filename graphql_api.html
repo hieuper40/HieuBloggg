@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL: API cho Thời Đại Hiện Đại</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: left; /* Căn lề trái */
+        }
+        header {
+            background-color: #111;
+            padding: 20px;
+        }
+        header .logo img {
+            width: 50px;
+            height: auto;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            padding: 50px 20px;
+            max-width: 1000px; /* Giới hạn chiều rộng */
+            margin: 0 auto; /* Căn giữa main */
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        .read-more {
+            color: #ff6347;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            display: inline-block; /* Đảm bảo nút "Đọc tiếp" là một khối */
+            padding: 10px 20px; /* Thêm padding cho nút */
+            margin-top: 20px; /* Thêm khoảng cách từ nội dung */
+            border: 2px solid #ff6347; /* Viền cho nút */
+            border-radius: 5px; /* Bo tròn các góc */
+            text-align: center;
+        }
+        .read-more:hover {
+            color: #fff;
+            background-color: #ff6347;
+        }
+        footer {
+            background-color: #111;
+            padding: 20px;
+        }
+        .social-links a {
+            color: #fff;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./img/icon-code.jpg" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="graphql_api.html">GraphQL: API cho Thời Đại Hiện Đại</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>GraphQL: API cho Thời Đại Hiện Đại</h1>
+        <p>GraphQL là một ngôn ngữ truy vấn API mạnh mẽ, giúp bạn truy vấn dữ liệu một cách linh hoạt và hiệu quả. Khác với REST, GraphQL cho phép bạn yêu cầu chính xác các dữ liệu bạn cần, không thừa cũng không thiếu.</p>
+
+        <h2>1. Giới Thiệu về GraphQL</h2>
+        <p>GraphQL là một ngôn ngữ truy vấn được phát triển bởi Facebook, và hiện nay được sử dụng rộng rãi trong các ứng dụng web hiện đại. Thay vì yêu cầu một endpoint duy nhất như REST, GraphQL cho phép bạn tạo ra các truy vấn tùy chỉnh để lấy dữ liệu từ nhiều nguồn một cách hiệu quả.</p>
+
+        <h2>2. Ưu Điểm của GraphQL</h2>
+        <p>GraphQL mang lại nhiều lợi ích so với REST, bao gồm:</p>
+        <ul>
+            <li><strong>Truy vấn chính xác:</strong> Bạn có thể yêu cầu chính xác những trường dữ liệu cần thiết, giúp tiết kiệm băng thông và thời gian xử lý.</li>
+            <li><strong>Không có vấn đề over-fetching hay under-fetching:</strong> Không giống như REST, nơi mà bạn có thể lấy nhiều dữ liệu không cần thiết hoặc thiếu dữ liệu, GraphQL giúp bạn có thể yêu cầu chính xác những gì bạn cần.</li>
+            <li><strong>Khả năng mở rộng tốt hơn:</strong> Bạn có thể dễ dàng mở rộng GraphQL mà không cần thay đổi API cũ.</li>
+        </ul>
+
+        <h2>3. Cài Đặt GraphQL với Node.js</h2>
+        <p>Để bắt đầu sử dụng GraphQL với Node.js, bạn cần cài đặt một số thư viện như `express` và `graphql`.</p>
+        <pre>
+# Cài đặt các thư viện cần thiết
+npm install express graphql express-graphql
+        </pre>
+
+        <h3>Tạo một Server GraphQL đơn giản</h3>
+        <p>Dưới đây là một ví dụ về cách tạo một server GraphQL cơ bản với Node.js:</p>
+        <pre>
+const express = require('express');
+const { graphqlHTTP } = require('express-graphql');
+const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql');
+
+const app = express();
+
+// Định nghĩa schema
+const schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'Query',
+    fields: {
+      hello: {
+        type: GraphQLString,
+        resolve: () => 'Xin chào, GraphQL!',
+      },
+    },
+  }),
+});
+
+// Cấu hình express để sử dụng GraphQL
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  graphiql: true, // Cho phép sử dụng GraphiQL để thử nghiệm các truy vấn
+}));
+
+app.listen(4000, () => {
+  console.log('Server GraphQL đang chạy tại http://localhost:4000/graphql');
+});
+        </pre>
+
+        <h2>4. Thử Nghiệm GraphQL</h2>
+        <p>Để thử nghiệm với API GraphQL, bạn có thể sử dụng công cụ GraphiQL hoặc các công cụ khác như Postman hoặc Apollo Client.</p>
+        <p>Ví dụ, với server trên, bạn có thể gửi truy vấn sau:</p>
+        <pre>
+{
+  hello
+}
+        </pre>
+        <p>Và nhận được kết quả:</p>
+        <pre>
+{
+  "data": {
+    "hello": "Xin chào, GraphQL!"
+  }
+}
+        </pre>
+
+        <h2>5. Triển Khai GraphQL</h2>
+        <p>GraphQL có thể được triển khai trên nhiều nền tảng và dịch vụ. Bạn có thể triển khai server GraphQL của mình trên các dịch vụ như Heroku, AWS, hoặc Docker.</p>
+
+        <a href="blog.html" class="read-more">Trở về blog</a>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">LinkedIn</a>
+            <a href="#" target="_blank">Twitter</a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -406,3 +406,326 @@ footer {
     height: 81px;
     margin: -25px;
 }
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
+
+/* Căn chỉnh lại toàn bộ trang với nền màu đen và chữ màu trắng */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Nền màu đen */
+    color: #fff; /* Chữ màu trắng */
+}
+/* CSS cho thanh điều hướng */
+header {
+    position: fixed; /* Giữ cố định thanh điều hướng */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000; /* Nền đen */
+    z-index: 1000; /* Đảm bảo nó nằm trên các phần tử khác */
+    padding: 10px 0;
+}
+
+/* Thêm khoảng cách cho phần nội dung */
+main {
+    margin-top: 60px; /* Đảm bảo nội dung không bị che */
+}
+
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header .logo img {
+    height: 40px;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+header nav ul li a:hover {
+    color: #007bff; /* Màu khi hover */
+}
+
+/* Cấu trúc chính */
+main {
+    padding: 40px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Nội dung bài viết */
+.blog-detail {
+    background-color: #111; /* Nền tối cho phần nội dung */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Căn giữa tiêu đề chính */
+.main-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Căn giữa các tiêu đề phụ */
+.sub-title {
+    text-align: left;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* Căn giữa các tiêu đề phụ nhỏ */
+.sub-sub-title {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Căn giữa đoạn văn bản */
+.intro-text, .sub-title {
+    text-align: justify;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Các mục trong danh sách lợi ích */
+.benefits-list {
+    list-style-type: decimal; /* Đánh số cho các mục */
+    margin-left: 40px;
+}
+
+/* Nền cho bảng mã */
+pre {
+    background-color: #1e1e1e; /* Nền tối cho bảng code */
+    color: #f8f8f8; /* Chữ màu sáng */
+    padding: 20px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    font-size: 16px;
+}
+
+/* Nút "Trở lại Blog" */
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #333; /* Nền tối cho footer */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .social-links a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+footer .social-links a:hover {
+    color: #007bff;
+}
+
+
+
+
+
+
+
+
+/* Toàn bộ trang có nền đen và chữ trắng */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Nền đen */
+    color: #fff; /* Chữ trắng */
+}
+
+/* Thanh điều hướng */
+header {
+    background-color: #333; /* Nền xám cho header */
+    padding: 20px 0;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header .logo img {
+    height: 40px;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+header nav ul li a:hover {
+    color: #007bff; /* Màu khi hover */
+}
+
+/* Cấu trúc chính */
+main {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Nội dung chi tiết bài viết */
+.blog-detail {
+    background-color: #111; /* Nền tối cho phần nội dung */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+/* Căn giữa tiêu đề chính */
+.main-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Căn giữa các tiêu đề phụ */
+.sub-title {
+    text-align: left;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* Căn giữa các tiêu đề phụ nhỏ */
+.sub-sub-title {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Căn giữa đoạn văn bản */
+.intro-text, .sub-text {
+    text-align: justify;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Các mục trong danh sách lợi ích */
+.benefits-list {
+    list-style-type: decimal; /* Đánh số cho các mục */
+    margin-left: 40px;
+}
+
+/* Nền cho bảng mã */
+pre {
+    background-color: #1e1e1e; /* Nền tối cho bảng code */
+    color: #f8f8f8; /* Chữ sáng */
+    padding: 20px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    font-size: 16px;
+}
+
+/* Nút "Trở lại Blog" */
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    background-color: #333; /* Nền tối cho footer */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .social-links a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+footer .social-links a:hover {
+    color: #007bff;
+}
+
